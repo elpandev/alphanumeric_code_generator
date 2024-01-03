@@ -10,7 +10,7 @@ describe.each(['ABC', 'DTY', 'Sj7Yu8'])
 
   ('codes generated using length = %i', (length: number) => {
     const codes     = {} as Record<string, number>
-    const max_value = generator.calculate_max_value(length)
+    const max_value = generator.calculate_max_number(length)
 
     for (let i = 1; i <= max_value; i++) {
       const code = generator.generate(i, length)

@@ -1,35 +1,68 @@
+function random_seed(): string {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'.split('')
+  
+  for (let i = 0; i < letters.length; i++) {
+    const index = Math.floor(Math.random() * (i + 1));
+    const temp  = letters[i]
+
+    letters[i]     = letters[index]
+    letters[index] = temp
+  }
+
+  return letters.join('')
+}
+
 export class CodeGenerator {
+  public seed:        string
   public seed_length: number
   public first_chart: string
 
-  constructor(public seed: string) {
-    const unique = Array.from(new Set(seed.split(''))).join('')
+  constructor(seed?: string) {
+    this.seed = seed ?? random_seed()
+    this.seed = Array.from(new Set(this.seed.split(''))).join('')
 
-    this.seed_length = unique.length
-    this.first_chart = unique.charAt(0)
+    this.seed_length = this.seed.length
+    this.first_chart = this.seed.charAt(0)
   }
 
-  public calculate_max_value(length: number): number {
+  /**
+   * calculate the max number with which it can generate a unique alphanumeric code
+   * @param length alphanumeric code length
+   * @returns max number
+   */
+  public calculate_max_number(length: number): number {
     return Math.pow(this.seed_length, length)
   }
 
-  public generate_with_validation(value: number, length: number): string {
-    const max_value = this.calculate_max_value(length)
+  /**
+   * generate an alphanumeric code representation of a number validating the max number possible and not negative values
+   * @param num number
+   * @param length length
+   * @returns alphanumeric code representation
+   */
+  public generate_with_validation(num: number, length: number = 7): string {
+    const max_number = this.calculate_max_number(length)
 
-    if (value <= 0) {
+    if (num <= 0) {
       throw new Error(`number must be greater than or equal to 1`)
     }
 
-    if (value >= max_value) {
-      throw new Error(`max value is: ${max_value}`)
+    if (num >= max_number) {
+      throw new Error(`max number is: ${max_number}`)
     }
 
-    return this.generate(value, length)
+    return this.generate(num, length)
   }
 
-  public generate(value: number, length: number): string {
+  /**
+   * generate an alphanumeric code representation of a number
+   * @param num number
+   * @param length length
+   * @returns alphanumeric code representation
+   */
+  public generate(num: number, length: number = 7): string {
     let text = ''
-    let curr = value - 1
+    let curr = num - 1
     let a    = 0
   
     for (let i = 0; i < length; i++) {
