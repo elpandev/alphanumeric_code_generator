@@ -1,6 +1,6 @@
 {
   "name": "@elpandev/alphanumeric_code_generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "transform a number into a string using a seed",
   "main": "src/index",
   "scripts": {
