@@ -15,14 +15,12 @@ function random_seed(): string {
 export class CodeGenerator {
   public seed:        string
   public seed_length: number
-  public first_chart: string
 
   constructor(seed?: string) {
     this.seed = seed ?? random_seed()
     this.seed = Array.from(new Set(this.seed.split(''))).join('')
 
     this.seed_length = this.seed.length
-    this.first_chart = this.seed.charAt(0)
   }
 
   /**
@@ -71,6 +69,6 @@ export class CodeGenerator {
       text = `${this.seed.charAt(a)}${text}`
     }
   
-    return text.padStart(length, this.first_chart)
+    return text
   }
 }
