@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "transform a number into a string using a seed",
   "main": "dist/index",
-  "types": "dits/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest"
   },
