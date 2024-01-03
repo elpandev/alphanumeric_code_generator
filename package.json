@@ -1,0 +1,21 @@
+{
+  "name": "@elpandev/alphanumeric_code_generator",
+  "version": "1.0.0",
+  "description": "transform a number into a string using a seed",
+  "main": "dist/index",
+  "types": "dits/index.d.ts",
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "elpandev",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "src/*"
+  ],
+  "devDependencies": {
+    "vitest": "^0.34.6"
+  }
+}
