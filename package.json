@@ -2,8 +2,7 @@
   "name": "@elpandev/alphanumeric_code_generator",
   "version": "1.0.0",
   "description": "transform a number into a string using a seed",
-  "main": "dist/index",
-  "types": "dist/index.d.ts",
+  "main": "src/index",
   "scripts": {
     "test": "vitest"
   },
